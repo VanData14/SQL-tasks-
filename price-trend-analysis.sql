@@ -1,3 +1,5 @@
+Basic Trend Comparison (Month-over-Month)
+  
 Table: Product_prices
 +------------+------------+--------+
 | product_id |   month    | price  |
@@ -42,3 +44,5 @@ Extend the previous query: Add a column that flags whether the price increased c
   END AS price_flag
 FROM product_prices;
 
+
+  
