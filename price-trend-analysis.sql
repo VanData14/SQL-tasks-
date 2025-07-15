@@ -22,3 +22,23 @@ SELECT
   LAG(price, 1) OVER (PARTITION BY product_id ORDER BY month) AS previous_price,
   price - LAG(price, 1) OVER (PARTITION BY product_id ORDER BY month) AS price_diff
 FROM product_prices;
+
+
+🔹 Question 2: Price Increase Flag
+  
+🧩 Question:
+
+Extend the previous query: Add a column that flags whether the price increased compared to the previous month ('UP', 'DOWN', 'SAME').
+
+  SELECT
+  product_id,
+  month,
+  price,
+  LAG(month,1)-price over(PARTITION BY product_id ORDER BY month) As previous_price,
+  CASE 
+    WHEN price > 150 THEN 'Up'
+    WHEN price BETWEEN 100 AND 150 THEN 'Same'
+    WHEN price < 100 THEN 'Down'
+  END AS price_flag
+FROM product_prices;
+
